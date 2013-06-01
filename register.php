@@ -7,10 +7,8 @@
 
 <body>
 <?
-$mysqli = new mysqli("localhost", "user", "pass", "database");
-if ($mysqli->connect_errno) {
-    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-}
+include('includes/database.php');
+
 if ($stmt = $mysqli->prepare("INSERT INTO `regisrations`(`firstname`,`lastname`,`email`,`address`,`city`,`state`,`zip`,`dayphone`,`eveningphone`,`affiliation`) VALUES (?,?,?,?,?,?,?,?,?,?)")){
 
 $stmt->bind_param('ssssssisss',$_SESSION[firstname],$_SESSION[lastname],$_SESSION[email],$_SESSION[address],$_SESSION[city],$_SESSION[state],$_SESSION[zip],$_SESSION[dayphone],$_SESSION[eveningphone],$_SESSION[affiliation]);
